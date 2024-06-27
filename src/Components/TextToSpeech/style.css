@@ -1,0 +1,23 @@
+.outerdiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    overflow-x: auto;
+    gap: 10px;
+    position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+
+}
+
+.buttonCSS{
+  cursor: pointer;
+}
+
+
+.buttonCSS:hover {
+  background-color: #ddd; /* Add any hover effect, like changing background color */
+  color: #000; /* Optional: Change text color on hover */
+}
