@@ -6,8 +6,8 @@ import GoogleTranslateAPI from "../../services/GoogleTranslateAPI.js";
 import "./style.css";
 import TextToSpeech from "../TextToSpeech/TextToSpeech.js";
 
-const API_KEY = process.env.REACT_APP_API_KEY
-const API_URL =process.env.REACT_APP_LIST_LANGUAGES
+const API_KEY = process.env.REACT_APP_API_KEY;
+const API_URL = process.env.REACT_APP_LIST_LANGUAGES;
 
 const SpeechToText = () => {
   const [languages, setLanguages] = useState([]);
@@ -15,13 +15,12 @@ const SpeechToText = () => {
   const [targetLanguage, setTargetLanguage] = useState("");
   const [speechRecognitionLanguage, setSpeechRecognitionLanguage] = useState("");
 
-
+  // This useEffect hook will fetch all possible languages in which client can receive input or output
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${API_URL}?key=${API_KEY}`);
         setLanguages(response.data.data.languages);
-       // console.log(response.data.data.languages)
       } catch (error) {
         console.error("Error fetching Languages :", error);
       }
@@ -31,17 +30,16 @@ const SpeechToText = () => {
 
   const { transcript, browserSupportsSpeechRecognition } = useSpeechRecognition();
 
+  // For copy text to clipboard
   const [isLeftCopied, setLeftCopied] = useClipboard(transcript, { successDuration: 1000 });
   const [isRightCopied, setRightCopied] = useClipboard(translatingText, { successDuration: 1000 });
 
-  const startListening = () => SpeechRecognition.startListening({ continuous: true, language:speechRecognitionLanguage  });
+  const startListening = () => SpeechRecognition.startListening({ continuous: true, language: speechRecognitionLanguage });
 
-  
-  
+  // This function will translate the transcript into targetLanguage
   const handleTranslate = async () => {
     if (transcript) {
       const translatedText = await GoogleTranslateAPI(transcript, targetLanguage);
-     // console.log("Translated text is ", translatedText);
       setTranslatingText(translatedText);
     }
   };
@@ -52,56 +50,41 @@ const SpeechToText = () => {
 
   return (
     <div className="firstdiv">
-      <h1 className="h1div" >Language Translator</h1>
+      <h1 className="h1div">Language Translator</h1>
       <br />
       <div className="div2">
-        <div className="leftDiv" >
-        <select value={speechRecognitionLanguage} onChange={(e) => setSpeechRecognitionLanguage(e.target.value)}>
+        <div className="leftDiv">
+          <select value={speechRecognitionLanguage} onChange={(e) => setSpeechRecognitionLanguage(e.target.value)}>
             <option value="">--Please choose an option--</option>
-            {languages.map((language, index) => {
-              const languageName = new Intl.DisplayNames(["en"], { type: "language" }).of(language.language);
-              return (
-                <option key={index} value={language.language}>
-                  {languageName}
-                </option>
-              );
-            })}
+            {languages.map((language, index) => (
+              <option key={index} value={language.language}>{new Intl.DisplayNames(["en"], { type: "language" }).of(language.language)}</option>
+            ))}
           </select>
-          <button className="copyButton" onClick={setLeftCopied}>
-            {isLeftCopied ? "Copied!" : "Copy"}
-          </button>
+          <button className="copyButton" onClick={setLeftCopied}>{isLeftCopied ? "Copied!" : "Copy"}</button>
           <br />
           {transcript}
-          <br/>
+          <br />
           <div className="buttonDiv">
-        <button className="buttonCSS" onClick={startListening}>Start Listening</button>
-        <button className="buttonCSS" onClick={SpeechRecognition.stopListening}>Stop Listening</button>
-      </div>
+            <button className="buttonCSS" onClick={startListening}>Start Listening</button>
+            <button className="buttonCSS" onClick={SpeechRecognition.stopListening}>Stop Listening</button>
+          </div>
         </div>
         <div className="rightDiv">
           <select value={targetLanguage} onChange={(e) => setTargetLanguage(e.target.value)}>
             <option value="">--Please choose an option--</option>
-            {languages.map((language, index) => {
-              const languageName = new Intl.DisplayNames(["en"], { type: "language" }).of(language.language);
-              return (
-                <option key={index} value={language.language}>
-                  {languageName}
-                </option>
-              );
-            })}
+            {languages.map((language, index) => (
+              <option key={index} value={language.language}>{new Intl.DisplayNames(["en"], { type: "language" }).of(language.language)}</option>
+            ))}
           </select>
           <button onClick={handleTranslate}>Translate</button>
-          <button className="copyButton" onClick={setRightCopied}>
-            {isRightCopied ? "Copied!" : "Copy"}
-          </button>
+          <button className="copyButton" onClick={setRightCopied}>{isRightCopied ? "Copied!" : "Copy"}</button>
           <br />
           {translatingText}
-          <br/>
-        <TextToSpeech className="rightdivButtons" text={translatingText} languageCode={targetLanguage}/>
+          <br />
+          <TextToSpeech className="rightdivButtons" text={translatingText} languageCode={targetLanguage} />
         </div>
       </div>
       <br />
-      
     </div>
   );
 };
