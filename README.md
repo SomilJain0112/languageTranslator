@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# Language Translator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Language Translator is a React.js webapp .
 
-## Available Scripts
+## Hosted Project Link
 
-In the project directory, you can run:
+https://language-translator-ruddy.vercel.app/
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Setup Project 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Step1. To fork the repository run following command
 
-### `npm test`
+```bash
+git clone https://github.com/SomilJain0112/languageTranslator
+```
+Step2. To Install dependency run following command in root folder
+```bash
+npm i
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Step3. Create .env file in the root folder and write value of environment variables . Take reference of .env.example
 
-### `npm run build`
+Step4. To run the project locally run following command
+```bash
+npm start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## How to use
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+Select language from left side that you want to give as input.
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+Click on start listening to give voice input.
+```
 
-### `npm run eject`
+```bash
+Click on stop listening when want to stop giving input.
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+Click on Select language from right side , Choose the language that you want to hear as output.
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+Click on Translate to translate language. 
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+Click on Play to listen translated language and can use pause and stop button to control audio. 
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Contributing
 
-## Learn More
+Pull requests are welcome. For major changes, please open an issue first
+to discuss what you would like to change.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Please make sure to update tests as appropriate.
